@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shailesh Portfolio </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+     <header>
+        <nav class="navbar">
+            <div class="left"> Shailesh's Portfolio </div>
+            <div class="right">
+                <ul>
+                    <li class="hover">Home</li>
+                    <li class="hover">About</li>
+                    <li class="hover">Project</li>
+                    <li class="hover">Project</li>
+                    <li class="hover">Contact</li>
+                </ul>
+            </div>
+        </nav>
+     </header>
+     
+
+    <main>
+        <section class="firstsection">
+            <div class="leftSection">
+                   Hii,  My name is <span class="purple">Shailesh Jamge </span>
+                   <br>
+                   <div>I am a  <br>  <span id="typing"></span></div>
+            </div>
+            <div class="rightSection">
+                    <img src="bg.png" alt="">
+            </div>
+        </section>
+      </main>
+
+    <div class="projects">
+          <div id="project1">
+            <img src="photo.png" alt="img " class="hover-shadow">
+          </div>
+          <div id="project2">
+            <img src="photo.png" alt="img " class="hover-shadow">
+          </div>
+          <div id="project3">
+            <img src="photo.png" alt="img " class="hover-shadow">
+          </div>
+          <div id="project4">
+            <img src="photo.png" alt="img " class="hover-shadow">
+          </div>
+        </div>
+        <div class="journey-heading">
+          <span><h1>Educational journey</h1></span>
+        </div>
+         
+
+        <section class="journey">
+               <div class="road">
+    <div class="road-fill"></div>
+  </div>
+    
+  <div class="step left animate">
+    <div class="point">1</div>
+    <div class="content">
+      <h3>High School</h3>
+      <p>Rajarshi Shahu Junior Science College , Latur</p>
+      <span>2022-2023</span>
+    </div>
+  </div>
+
+  <div class="step right animate">
+    <div class="point">2</div>
+    <div class="content">
+      <h3>SSC</h3>
+      <p>Anant Tuljaram Naik Vidyalaya , Nalegaon </p>
+      <span>2020 – 2021</span>
+    </div>
+  </div>
+
+  <div class="step left animate">
+    <div class="point">3</div>
+    <div class="content">
+      <h3>Bachelor’s Degree</h3>
+      <p>B.Sc in Computer Science</p>
+      <span>2023 – 2026</span>
+    </div>
+  </div>
+
+        </section>
+  
+
+<script>
+  const words = ["Web Developer..","Full stack developer..","Android Developer.."];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function typeEffect() {
+    const currentWord = words[wordIndex];
+    const typingElement = document.getElementById("typing");
+
+    if (!isDeleting) {
+      typingElement.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+
+      if (charIndex === currentWord.length) {
+        setTimeout(() => isDeleting = true, 1500); // pause after typing
+      }
+    } else {
+      typingElement.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+
+      if (charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+      }
+    }
+
+    setTimeout(typeEffect, isDeleting ? 0 : 100);
+  }
+
+  typeEffect();
+
+  /* journey steps */ 
+
+  const steps = document.querySelectorAll('.step');
+const roadFill = document.querySelector('.road-fill');
+
+window.addEventListener('scroll', () => {
+  const scrollPosition = window.scrollY + window.innerHeight;
+
+  steps.forEach((step, index) => {
+    if (scrollPosition > step.offsetTop + 100) {
+      step.classList.add('show');
+      roadFill.style.height = `${(index + 1) * 30}%`;
+    }
+  });
+});
+
+
+</script>
+</body>
+</html>
